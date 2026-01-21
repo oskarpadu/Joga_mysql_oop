@@ -1,0 +1,18 @@
+<h1>Artiklid autorilt: {{author.name}}</h1>
+
+{{#if articles.length}}
+  <ul>
+    {{#each articles}}
+      <li>
+        <a href="/article/{{this.slug}}">
+          {{this.title}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Sellel autoril ei ole veel artikleid.</p>
+{{/if}}
+{{body}}
+
+
