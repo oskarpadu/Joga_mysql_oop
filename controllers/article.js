@@ -1,6 +1,5 @@
-const con = require('../utils/db');
 const articleDbModel = require('../models/article');
-const articleModel = require('../models/article');
+const articleModel = new articleDbModel();
 
 class articleController {
     constructor() {
@@ -18,19 +17,22 @@ class articleController {
     }
 
     async createNewArticle(req, res) {
+        console.log('creating new article')
+
         const newArticle = {
             name: req.body.name,
             slug: req.body.slug,
             image: req.body.image,
             body: req.body.body,
-            published: new Date().toDateString().slice(0, 19).replace('T', ' '),
+            published: new Date().toISOString().slice(0, 19).replace('T', ' '),
             author_id: req.body.author_id
         }
+        console.log(newArticle) 
         const createdArticleId = await articleModel.create(newArticle);
         res.status(201).json({
             message: `created article with id: ${createdArticleId}`,
             article: {id: createdArticleId, ...newArticle}
-        });
+        }); 
     }
 };
 

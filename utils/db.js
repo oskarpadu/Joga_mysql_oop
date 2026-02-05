@@ -1,10 +1,10 @@
-const mysql = require('mysql2/promise');
+const mysql = require('mysql2');
 
-const db = mysql.createConnection({
-    hhost: 'localhost',
+const conn = mysql.createConnection({
+    host: 'localhost',
     user: 'root',
     password: 'qwerty',
     database: 'joga_mysql'
 });
 
-module.exports = db;
+module.exports = conn;

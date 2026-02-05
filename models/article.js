@@ -1,8 +1,8 @@
-const BaseSQLModel = require('./base_sql_model');
+const MySQLBase = require('./base');
 
-class Article extends BaseSQLModel {
+class Article extends MySQLBase {
     constructor() {
-        super('articles');
+        super('article');
     }
 
     async findAll() {
@@ -16,9 +16,9 @@ class Article extends BaseSQLModel {
     }
 
     async create(article) {
-        const CreatedArticleId = await super.create(article);
-        return CreatedArticleId;
-    } 
+        const createdArticleId = await super.create(article);
+        return createdArticleId;
+    }
 }
 
-module.exports = new Article();
+module.exports = Article;
